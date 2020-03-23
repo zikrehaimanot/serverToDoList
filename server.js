@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 app.post('/toDoList', (req, res) => {
   db.collection('taskcollection').save({
     task: req.body.task,
-    completed: "incomplete"
+    completed: "incomplete",
+  
   }, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
@@ -46,7 +47,9 @@ app.put('/update', (req, res) => {
   db.collection('taskcollection')
   .findOneAndUpdate({task: req.body.task}, {
     $set: {
-      completed:"complete"
+      completed:"complete",
+
+
     }
   }, {
     sort: {_id: -1},
